@@ -74,10 +74,10 @@ To define API settings and callback methods or transformers. It takes object as 
 
 
 #### Request Settings
-**baseUrl** `string`
+**baseUrl** `string`:
 Default URL for API. For example: *http://api.site.com*
 
-**headers** `object`
+**headers** `object`:
 Default headers that will send with all requests.
 
 ```js
@@ -87,23 +87,23 @@ Default headers that will send with all requests.
 }
 ```
 
-**mode** `string`
+**mode** `string`:
 Mode of the request. Default: `cors`, Available Values: `cors`, `no-cors`, `same-origin`, `navigate`
 
-**credentials** `string`
+**credentials** `string`:
 Credentials of the request. Default: `omit`, Available Values: `omit`, `same-origin`
 
-**cache** `string`
+**cache** `string`:
 Cache mode of the request. Default: `cache`, Available Values: `cache`, `no-cache`
 
-**json** `boolean`
+**json** `boolean`:
 Is API response in JSON format? Default: `true`
 
 
 #### Transform Settings
 You can transform API responses via transformers. To create a response trasformer you can pass `transformSuccess` and `transformError` functions to your settings object.
 
-**transformSuccess** `function`: `(response, formattedResponse)`
+**transformSuccess** `function`: `(response, formattedResponse)`:
 This function takes `response`, `formatted` values as arguments.
 
 ```js
@@ -113,7 +113,7 @@ This function takes `response`, `formatted` values as arguments.
 }
 ```
 
-**transformError** `function`: `(response, formattedResponse)`
+**transformError** `function`: `(response, formattedResponse)`:
 This function takes `response`, `formatted` values as arguments.
 
 ```js
@@ -127,7 +127,7 @@ This function takes `response`, `formatted` values as arguments.
 #### Middlewares
 You can use `pre` and `post` middlewares between requests and responses.
 
-**preRequest** `function`: `(url, fetchOptions, store, next)`
+**preRequest** `function`: `(url, fetchOptions, store, next)`:
 This function takes `url`, `fetchOptions`, `store`, `next` values as arguments. `url` argument stores full formatted request URL. `fetchOptions` is an object that used by *fetch* library. You must return `next` function from this method to keep going process.
 
 ```js
@@ -140,7 +140,7 @@ This function takes `url`, `fetchOptions`, `store`, `next` values as arguments. 
 ```
 
 
-**postRequest** `function`: `(url, response, formattedResponse)`
+**postRequest** `function`: `(url, response, formattedResponse)`:
 This middleware runs when request has been completed. It takes `url`, `response`, `formattedResponse` values as arguments.
 
 ```js
@@ -152,7 +152,7 @@ This middleware runs when request has been completed. It takes `url`, `response`
 ```
 
 
-**postSuccess** `function`: `(url, response, formattedResponse)`
+**postSuccess** `function`: `(url, response, formattedResponse)`:
 This middleware runs when request has been completed **successfully**. It takes `url`, `response`, `formattedResponse` values as arguments.
 
 ```js
@@ -164,7 +164,7 @@ This middleware runs when request has been completed **successfully**. It takes 
 ```
 
 
-**posterror** `function`: `(url, response, formattedResponse)`
+**posterror** `function`: `(url, response, formattedResponse)`:
 This middleware runs when request has been **failed**. It takes `url`, `response`, `formattedResponse` values as arguments.
 
 ```js
@@ -178,13 +178,13 @@ This middleware runs when request has been **failed**. It takes `url`, `response
 #### Check Internet Connection Settings
 You can check internet connection via `redux-api-call`. It dispatches actions to notify application when client's internet connection get down or reconnected.
 
-**checkInternetConnection** `boolean`
+**checkInternetConnection** `boolean`:
 To enable or disable this feature. Default: `true`
 
-**onlineInterval** `integer`
+**onlineInterval** `integer`:
 Interval duration to check is internet online. Default: `5000`
 
-**offlineInterval** `integer`
+**offlineInterval** `integer`:
 Interval duration to is internet reconnected. Default: `1000`
 
 
