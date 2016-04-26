@@ -8,7 +8,7 @@ An API middleware that use `fetch` library for your Redux applications.
 
 redux-api-call just have methods that represent HTTP verbs. Example `GET` request with **redux-saga** is like this:
 
-```
+```js
 import { SOME_DATA_REQUESTED, dataSucceeded } from './actions';
 import { takeLatest } from 'redux-saga';
 import { put } from 'redux-saga/effects';
@@ -37,7 +37,7 @@ You must configure your API with `createAPIMiddleware` method to set default set
 You may want to use `APIReducer` to get pending requests from your application's state.
 
 
-```
+```js
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { createAPIMiddleware, APIReducer } from '../service/redux-api-call';
 import * as reducers from '../reducers';
@@ -80,7 +80,7 @@ Default URL for API. For example: *http://api.site.com*
 **headers** `object`
 Default headers that will send with all requests.
 
-```
+```js
 {
   Authorization: 'Bearer token',
   'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ You can transform API responses via transformers. To create a response trasforme
 **transformSuccess** `function`: `(response, formattedResponse)`
 This function takes `response`, `formatted` values as arguments.
 
-```
+```js
 {
   // Always returns payload object from response on successful API calls.
   transformSuccess: (response, json) => json.payload
@@ -116,7 +116,7 @@ This function takes `response`, `formatted` values as arguments.
 **transformError** `function`: `(response, formattedResponse)`
 This function takes `response`, `formatted` values as arguments.
 
-```
+```js
 {
   // Always returns error object from response when API call failed.
   transformError: (response, json) => json.payload
@@ -130,7 +130,7 @@ You can use `pre` and `post` middlewares between requests and responses.
 **preRequest** `function`: `(url, fetchOptions, store, next)`
 This function takes `url`, `fetchOptions`, `store`, `next` values as arguments. `url` argument stores full formatted request URL. `fetchOptions` is an object that used by *fetch* library. You must return `next` function from this method to keep going process.
 
-```
+```js
 {
   preRequest: (url, fetchOptions, store, next) {
     console.log(url);
@@ -143,7 +143,7 @@ This function takes `url`, `fetchOptions`, `store`, `next` values as arguments. 
 **postRequest** `function`: `(url, response, formattedResponse)`
 This middleware runs when request has been completed. It takes `url`, `response`, `formattedResponse` values as arguments.
 
-```
+```js
 {
   postRequest: (url, response, formattedResponse) => {
     console.log('Request finished');
@@ -155,7 +155,7 @@ This middleware runs when request has been completed. It takes `url`, `response`
 **postSuccess** `function`: `(url, response, formattedResponse)`
 This middleware runs when request has been completed **successfully**. It takes `url`, `response`, `formattedResponse` values as arguments.
 
-```
+```js
 {
   postSuccess: (url, response, formattedResponse) => {
     console.log('Request has been finished successfully!');
@@ -167,7 +167,7 @@ This middleware runs when request has been completed **successfully**. It takes 
 **posterror** `function`: `(url, response, formattedResponse)`
 This middleware runs when request has been **failed**. It takes `url`, `response`, `formattedResponse` values as arguments.
 
-```
+```js
 {
   postError: (url, response, formattedResponse) => {
     console.log('An error occured on API request!');
@@ -197,7 +197,7 @@ To make API request just import related http verb from `redux-api-call`
 
 These methods take url `(string|object) `  and headers `object` arguments.
 
-```
+```js
 import { get, del } from 'redux-api-call';
 
 get('/users')
@@ -228,7 +228,7 @@ You may add new headers or replace default headers to request. For this, you can
 These methods take url `(string|object) `, body `(object|FormData)` and headers `object` arguments.
 
 
-```
+```js
 import { post, put } from 'redux-api-call';
 
 const body = {
